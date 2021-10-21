@@ -1,0 +1,6 @@
+framework module Pods_AppcentNews {
+  umbrella header "Pods-AppcentNews-umbrella.h"
+
+  export *
+  module * { export * }
+}
