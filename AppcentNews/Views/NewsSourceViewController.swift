@@ -1,17 +1,22 @@
 //
-//  ResultViewController.swift
+//  NewsSourceViewController.swift
 //  AppcentNews
 //
-//  Created by Barış Can Akkaya on 21.10.2021.
+//  Created by Barış Can Akkaya on 23.10.2021.
 //
 
 import UIKit
+import WebKit
 
-class ResultViewController: UIViewController {
-
+class NewsSourceViewController: UIViewController, WKUIDelegate {
+    var url: URL?
+    @IBOutlet weak var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let url = url {
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
         // Do any additional setup after loading the view.
     }
     

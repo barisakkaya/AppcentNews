@@ -330,7 +330,7 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 5.4)
   - Firebase/Analytics
   - Firebase/Firestore
   - FirebaseFirestoreSwift
@@ -388,6 +388,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 8c2382997b2af0fa93f211bf7e106fd3461e3b06
+PODFILE CHECKSUM: e6ac4d04c693453aed31cacbd4a50b4b221809f2
 
 COCOAPODS: 1.11.2

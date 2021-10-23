@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class CustomTextField: UITextField {
+    
+    var searchButton: UIButton!
 
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -24,12 +26,12 @@ class CustomTextField: UITextField {
         let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
         clearButton.setImage(UIImage(systemName: "x.circle"), for: .normal)
         clearButton.tintColor = .black
-        let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+        searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
         searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchButton.tintColor = .black
         self.rightView = clearButton
         self.leftView = searchButton
-        searchButton.addTarget(self, action: #selector(clearClicked), for: .touchUpInside)
+        
         clearButton.addTarget(self, action: #selector(clearClicked), for: .touchUpInside)
         
         self.clearButtonMode = .never
@@ -41,6 +43,8 @@ class CustomTextField: UITextField {
     {
         self.text = ""
     }
+    
+    
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
