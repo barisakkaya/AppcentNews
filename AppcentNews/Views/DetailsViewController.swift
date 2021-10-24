@@ -38,8 +38,6 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if from == 1 {
-            shareButton.isEnabled = false
-            shareButton.tintColor = UIColor.clear
             likeButton.isEnabled = false
             likeButton.tintColor = UIColor.clear
         }
