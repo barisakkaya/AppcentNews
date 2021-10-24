@@ -117,7 +117,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" id="59x-k3-VTl"/>
                     <connections>
-                        <segue destination="okQ-ZO-okD" kind="presentation" identifier="goToResult2" modalPresentationStyle="fullScreen" id="A7Z-5W-baL"/>
+                        <outlet property="favLabel" destination="bjk-oX-WEy" id="SSF-cs-Qic"/>
+                        <outlet property="tableView" destination="YeE-VZ-w2R" id="Sfk-5k-os0"/>
+                        <segue destination="okQ-ZO-okD" kind="presentation" identifier="toDetailsVC2" modalPresentationStyle="fullScreen" id="A7Z-5W-baL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJ3-lw-4I5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -317,6 +319,7 @@
                         <outlet property="imageView" destination="fR5-k6-eGW" id="vbw-KI-Unj"/>
                         <outlet property="likeButton" destination="JFo-8E-jac" id="IZ6-13-X40"/>
                         <outlet property="scrollView" destination="4Pn-Ct-DSD" id="B4O-sy-BEF"/>
+                        <outlet property="shareButton" destination="mDA-FF-kZu" id="bfR-9c-ywq"/>
                         <outlet property="sourceButton" destination="puW-1I-o1c" id="rXZ-5C-T8X"/>
                         <outlet property="titleLabel" destination="QRG-qC-zjr" id="UTv-KD-2xs"/>
                         <segue destination="ffS-Ta-gjl" kind="presentation" identifier="goToWebView" modalPresentationStyle="fullScreen" id="eSx-z9-Ghh"/>
@@ -324,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFl-78-B3d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530.434782608696" y="-529.01785714285711"/>
+            <point key="canvasLocation" x="2572" y="-529"/>
         </scene>
         <!--News Source-->
         <scene sceneID="njG-R0-Dj8">
@@ -425,7 +428,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1v1-He-8tD"/>
+        <segue reference="A7Z-5W-baL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>

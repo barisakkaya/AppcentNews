@@ -9,9 +9,11 @@ import UIKit
 import FirebaseFirestore
 import SnapKit
 import Kingfisher
+import Firebase
 
 class DetailsViewController: UIViewController {
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var likeButton: UIBarButtonItem!
     @IBOutlet weak var sourceButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -29,10 +31,18 @@ class DetailsViewController: UIViewController {
     var contentText = ""
     var authorText = ""
     var url = ""
+    var from = 0
+    let db = Firestore.firestore()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if from == 1 {
+            shareButton.isEnabled = false
+            shareButton.tintColor = UIColor.clear
+            likeButton.isEnabled = false
+            likeButton.tintColor = UIColor.clear
+        }
         setLayout()
         
     }
@@ -53,11 +63,30 @@ class DetailsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func shareClicked(_ sender: UIBarButtonItem) {
-        
+        let ac = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(ac, animated: true)
     }
     @IBAction func likeClicked(_ sender: UIBarButtonItem) {
         if likeButton.image == UIImage(systemName: "heart") {
+            let data = [
+                "title": titleText,
+                "description": desc,
+                "date": date,
+                "source": source,
+                "imgUrl": imgUrl,
+                "contentText": contentText,
+                "authorText": authorText,
+                "url": url,
+] as [String: Any]
             likeButton.image = UIImage(systemName: "heart.fill")
+            db.collection("Favorites").addDocument(data: data) { (error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            } else {
+                                print("Başarılı")
+                            }
+                        }
+            
         } else {
             likeButton.image = UIImage(systemName: "heart")
         }

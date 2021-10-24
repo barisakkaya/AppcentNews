@@ -14,6 +14,6 @@ target 'AppcentNews' do
   pod 'lottie-ios'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.4'
-  pod 'Hero'
+  pod 'IQKeyboardManagerSwift'
   
 end

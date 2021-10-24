@@ -36,19 +36,22 @@ class NewsViewController: UIViewController {
     
     @objc func searchClicked(sender: UIButton) {
         if let text = textField.text {
-            let url = URL(string: "https://newsapi.org/v2/everything?q=\(text)&apiKey=69c66990c2124ef7b447612fbebd9431")!
-            print("url : \(url)")
-            Service().httpRequest(url: url) { news in
-                if let news = news {
-                    self.newsArrayViewModel = NewsArrayViewModel(news)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+            if let url = URL(string: "https://newsapi.org/v2/everything?q=\(text)&apiKey=69c66990c2124ef7b447612fbebd9431") {
+                print("url : \(url)")
+                Service().httpRequest(url: url) { news in
+                    if let news = news {
+                        self.newsArrayViewModel = NewsArrayViewModel(news)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }
+            
         }
         
     }
+    
     
     func createLayout() {
         let width = UIScreen.main.bounds.size.width
@@ -86,13 +89,13 @@ class NewsViewController: UIViewController {
         cell.descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(cell.titleLabel.snp_bottomMargin).offset(height * 0.04)
             make.leading.equalTo(width * 0.01)
-            make.width.equalTo(width * 0.70)
+            make.width.equalTo(width * 0.60)
         }
         cell.newsImageView.snp.makeConstraints { make in
             make.top.equalTo(cell.titleLabel.snp_bottomMargin).offset(height * 0.04)
             make.trailing.equalTo(width * -0.01)
-            make.width.equalTo(width * 0.25)
-            make.height.equalTo(cell.newsImageView.frame.size.height)
+            make.width.equalTo(width * 0.36)
+            make.height.equalTo(height * 0.1)
         }
         cell.sourceLabel.snp.makeConstraints { make in
             make.width.equalTo(width * 0.5)
@@ -109,6 +112,7 @@ class NewsViewController: UIViewController {
         
     }
     
+  
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,6 +126,7 @@ class NewsViewController: UIViewController {
                     dest.contentText = contentText
                     dest.imgUrl = imgUrl
                     dest.url = url
+                    dest.source = source
                 }
             }
         }
@@ -155,6 +160,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Tap tap")
         let newsViewModel = self.newsArrayViewModel.newsAtIndex(indexPath.row)
         
         titleText = newsViewModel.title
