@@ -4,7 +4,6 @@
 //
 //  Created by Barış Can Akkaya on 21.10.2021.
 //
-
 import UIKit
 import SnapKit
 import Kingfisher
@@ -100,6 +99,7 @@ class FavoritesViewController: UIViewController {
             make.top.equalTo(cell.titleLabel.snp_bottomMargin).offset(height * 0.04)
             make.leading.equalTo(width * 0.01)
             make.width.equalTo(width * 0.60)
+            make.height.equalTo(height * 0.1)
         }
         cell.newsImageView.snp.makeConstraints { make in
             make.top.equalTo(cell.titleLabel.snp_bottomMargin).offset(height * 0.04)
@@ -136,13 +136,12 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         let data = datas[indexPath.row]
         
         cell.titleLabel.text = data["title"] as? String
-        cell.titleLabel.font = cell.titleLabel.font.withSize(height * 0.04)
+        cell.titleLabel.font = cell.titleLabel.font.withSize(height * 0.025)
         cell.dateLabel.text = data["description"] as? String
         let url = URL(string: data["imgUrl"] as? String ?? "")
         cell.newsImageView.kf.setImage(with: url)
         cell.sourceLabel.text = "-\(data["source"] as? String ?? "Unknown")"
         cell.dateLabel.text = data["date"] as? String
-        cell.dateLabel.font = cell.dateLabel.font.withSize(height * 0.02)
         cell.descriptionLabel.text = data["description"] as? String
         
         setLayout(cell: &cell, height: height, width: width)

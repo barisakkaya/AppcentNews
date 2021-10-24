@@ -90,6 +90,7 @@ class NewsViewController: UIViewController {
             make.top.equalTo(cell.titleLabel.snp_bottomMargin).offset(height * 0.04)
             make.leading.equalTo(width * 0.01)
             make.width.equalTo(width * 0.60)
+            make.height.equalTo(height * 0.1)
         }
         cell.newsImageView.snp.makeConstraints { make in
             make.top.equalTo(cell.titleLabel.snp_bottomMargin).offset(height * 0.04)
@@ -98,13 +99,13 @@ class NewsViewController: UIViewController {
             make.height.equalTo(height * 0.1)
         }
         cell.sourceLabel.snp.makeConstraints { make in
-            make.width.equalTo(width * 0.5)
+            make.width.equalTo(width * 0.47)
             make.top.equalTo(cell.descriptionLabel.snp.bottom).offset(height * 0.02)
             make.leading.equalTo(width * 0.02)
             make.bottom.equalTo(height * -0.035)
         }
         cell.dateLabel.snp.makeConstraints { make in
-            make.width.equalTo(width * 0.45)
+            make.width.equalTo(width * 0.47)
             make.top.equalTo(cell.descriptionLabel.snp.bottom).offset(height * 0.02)
             make.trailing.equalTo(width * -0.02)
             make.bottom.equalTo(height * -0.035)
@@ -146,13 +147,12 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
         let newsViewModel = self.newsArrayViewModel.newsAtIndex(indexPath.row)
         
         cell.titleLabel.text = newsViewModel.title
-        cell.titleLabel.font = cell.titleLabel.font.withSize(height * 0.04)
+        cell.titleLabel.font = cell.titleLabel.font.withSize(height * 0.025)
         cell.descriptionLabel.text = newsViewModel.description
         let url = URL(string: newsViewModel.picUrl)
         cell.newsImageView.kf.setImage(with: url)
         cell.sourceLabel.text = "-\(newsViewModel.source)"
         cell.dateLabel.text = newsViewModel.date
-        cell.dateLabel.font = cell.dateLabel.font.withSize(height * 0.02)
         
         setLayout(cell: &cell, height: height, width: width)
         

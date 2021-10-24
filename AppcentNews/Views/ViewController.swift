@@ -36,14 +36,14 @@ class ViewController: UIViewController {
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(0)
             make.centerX.equalToSuperview()
             make.width.equalTo(width)
-            make.height.equalTo(width)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(height * -0.25)
         })
         if let animationView = animationView {
             tapButtob.snp.makeConstraints { make in
-                make.top.equalTo(animationView.snp.bottom).offset(height * 0.2)
+                make.top.equalTo(animationView.snp.bottom).offset(height * 0.075)
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(height * -0.075)
+                make.width.equalTo(width * 0.66)
                 make.centerX.equalToSuperview()
-                make.width.equalTo(width * 0.75)
-                make.height.equalToSuperview().multipliedBy(0.08)
             }
         }
     }
